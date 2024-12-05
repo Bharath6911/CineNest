@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineNest - Your Streaming Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>CineNest</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#movies">Movies</a></li>
+                <li><a href="#series">Series</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Search for movies or series...">
+            <button id="micButton">
+                🎤 
+            </button>
+        </div>
+    </header>
+    <main>
+        <section id="home" class="hero">
+            <h2>Welcome to CineNest</h2>
+            <p>Your one-stop hub for streaming movies and series.</p>
+        </section>
+        <section id="movies" class="content">
+            <h2>Movies</h2>
+            <div id="movieDetails"></div>
+            <div class="grid" id="movieGrid"></div>
+        </section>
+        <section id="series" class="content">
+            <h2>Series</h2>
+            <div class="grid" id="seriesGrid"></div>
+        </section>
+        <section id="contact" class="content">
+            <h2>Contact</h2>
+            <p>For any inquiries or feedback, please email us at <a href="mailto:mummadibharath9966@gmail.com">MAIL</a></p>
+        </section>
+    </main>
+    <footer>
+        <center>
+            <p>&copy; 2024 CineNest. All Rights Reserved.</p>
+             
+            <p class="disclaimer">
+                CineNest does not host any of the files displayed on this website. All content is provided by third-party file hosting services. We do not own, control, or upload any media files. Contact the hosting provider directly for any concerns.
+            </p>
+            <p>visit this site for the code -> <a href="https://github.com/Bharath6911/CineNest">SourceCode</a> </p>     
+        </center>
+    </footer>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <video id="videoPlayer" controls>
+                <source src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <script src="j.js"></script>
+</body>
+</html>
