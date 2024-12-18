@@ -3,13 +3,19 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 const movieGrid = document.getElementById('movieGrid');
 const seriesGrid = document.getElementById('seriesGrid');
-const searchInput = document.getElementById('search');
+const loadingSpinner = document.getElementById('loadingSpinner');
 
+// Function for loading spinner 
+function showLoadingSpinner() {
+    loadingSpinner.style.display = 'flex'; 
+    return new Promise(resolve => setTimeout(resolve, 1000)); 
+}
 
 
 
 async function fetchPopularMovies() {
     try {
+        await showLoadingSpinner(); 
         const response = await fetch(
             `${BASE_URL}/discover/movie?api_key=${API_KEY}&certification_country=US&certification.lte=PG-13&sort_by=popularity.desc&with_genres=28,12,16`
         );
@@ -19,11 +25,15 @@ async function fetchPopularMovies() {
     } catch (error) {
         console.error('Error fetching popular movies:', error);
     }
+    finally {
+        loadingSpinner.style.display = 'none'; // Hide the spinner after movies are fetched
+    }
 }
 
 // Fetch and display popular series
 async function fetchPopularSeries() {
     try {
+        await dhowLoadingSpinner();
         const response = await fetch(
             `${BASE_URL}/discover/tv?api_key=${API_KEY}&certification_country=US&certification.lte=PG-13&sort_by=popularity.desc&with_genres=10759,16,35`
         );
@@ -32,6 +42,9 @@ async function fetchPopularSeries() {
         displaySeries(filteredSeries);
     } catch (error) {
         console.error('Error fetching popular series:', error);
+    }
+    finally {
+        loadingSpinner.style.display = 'none'; // Hide the spinner after movies are fetched
     }
 }
 
