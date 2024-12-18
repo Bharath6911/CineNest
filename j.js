@@ -5,6 +5,11 @@ const movieGrid = document.getElementById('movieGrid');
 const seriesGrid = document.getElementById('seriesGrid');
 const searchInput = document.getElementById('search');
 const micButton = document.getElementById('micButton');
+const genreButton = document.getElementById('genreButton');
+const genreModal = document.getElementById('genreModal');
+const closeGenreModal = document.getElementById('closeGenreModal');
+const genreForm = document.getElementById('genreForm');
+const genreList = document.getElementById('genreList');
 
 // Fetch and display popular movies for kids 
 async function fetchPopularMovies() {
@@ -40,7 +45,7 @@ function filterMovies(movies) {
         const lowerTitle = movie.title.toLowerCase();
         const lowerOverview = movie.overview.toLowerCase();
 
-        // xcluded keywords
+        // excluded keywords
         const excludedKeywords = ['sun', 'pleasure', 'adult', 'nudity', 'sensual','japanese'];
         for (let keyword of excludedKeywords) {
             if (lowerTitle.includes(keyword) || lowerOverview.includes(keyword)) {
@@ -80,7 +85,7 @@ function displayMovies(movies) {
 
         const posterUrl = poster_path ? `${IMAGE_BASE_URL}${poster_path}` : 'images/default-poster.jpg';
 
-        card.innerHTML = `
+        card.innerHTML = ` 
             <a href="player.html?id=${id}&title=${encodeURIComponent(title)}">
                 <img src="${posterUrl}" alt="${title} Poster">
                 <div class="details">
@@ -104,7 +109,7 @@ function displaySeries(series) {
 
         const posterUrl = poster_path ? `${IMAGE_BASE_URL}${poster_path}` : 'images/default-poster.jpg';
 
-        card.innerHTML = `
+        card.innerHTML = ` 
             <a href="player.html?id=${id}&title=${encodeURIComponent(name)}">
                 <img src="${posterUrl}" alt="${name} Poster">
                 <div class="details">
@@ -116,7 +121,6 @@ function displaySeries(series) {
         seriesGrid.appendChild(card);
     });
 }
-
 
 // Search for movies dynamically
 async function searchMovies(query) {
@@ -141,8 +145,6 @@ async function searchSeries(query) {
         console.error('Error searching for series:', error);
     }
 }
-
-
 
 // Check for browser compatibility with the SpeechRecognition API
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -183,8 +185,6 @@ if (SpeechRecognition) {
     micButton.title = 'Speech recognition not supported in this browser.';
 }
 
-
-
 // Event listener for search input
 searchInput.addEventListener('input', () => {
     const query = searchInput.value.trim();
@@ -203,3 +203,60 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchPopularSeries();
 });
 
+// Open the genre modal when the button is clicked
+genreButton.addEventListener('click', () => {
+    genreModal.style.display = 'flex'; // Show the modal
+    genreButton.classList.add('active'); // Highlight the button
+    loadGenres(); // Load genres into the modal
+});
+
+// Close the genre modal when the close button is clicked
+closeGenreModal.addEventListener('click', () => {
+    genreModal.style.display = 'none'; // Hide the modal
+    genreButton.classList.remove('active'); // Remove button highlight
+});
+
+// Handle genre selection when the form is submitted
+genreForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const selectedGenres = Array.from(document.querySelectorAll('input[name="genre"]:checked'))
+        .map(input => input.value); // Collect selected genre IDs
+    
+    if (selectedGenres.length > 0) {
+        fetchMoviesByGenres(selectedGenres);  // Fetch movies based on selected genres
+        fetchSeriesByGenres(selectedGenres);  // Fetch series based on selected genres
+        
+        genreModal.style.display = 'none'; // Close the modal
+        genreButton.classList.add('active'); // Keep the button highlighted
+    } else {
+        alert('Please select at least one genre.');
+    }
+});
+
+// Fetch and display movies by multiple genres
+async function fetchMoviesByGenres(genreIds) {
+    try {
+        const genreString = genreIds.join(','); // Combine multiple genre IDs
+        const response = await fetch(
+            `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreString}&sort_by=popularity.desc`
+        );
+        const data = await response.json();
+        displayMovies(data.results); // Display the filtered movies
+    } catch (error) {
+        console.error('Error fetching movies by genres:', error);
+    }
+}
+
+// Fetch and display series by multiple genres
+async function fetchSeriesByGenres(genreIds) {
+    try {
+        const genreString = genreIds.join(','); // Combine multiple genre IDs
+        const response = await fetch(
+            `${BASE_URL}/discover/tv?api_key=${API_KEY}&with_genres=${genreString}&sort_by=popularity.desc`
+        );
+        const data = await response.json();
+        displaySeries(data.results); // Display the filtered series
+    } catch (error) {
+        console.error('Error fetching series by genres:', error);
+    }
+}
