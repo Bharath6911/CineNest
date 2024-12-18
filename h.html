@@ -13,11 +13,16 @@
         </div>
         <nav>
             <ul>
+                
                 <li><a href="#home">Home</a></li>
                 <li><a href="#movies">Movies</a></li>
                 <li><a href="#series">Series</a></li>
                 <li><a href="#contact">Contact</a></li>
+                
             </ul>
+        </nav>
+        <nav>
+            <button id="genreButton" class="highlight-button">Genres</button>
         </nav>
         <div class="search-bar">
             <input type="text" id="search" placeholder="Search for movies or series...">
@@ -42,7 +47,7 @@
         </section>
         <section id="contact" class="content">
             <h2>Contact</h2>
-            <p>For any inquiries or feedback, please email us at <a href="mailto:m7261154@gmail.com">MAIL</a></p>
+            <p>For any inquiries or feedback, please email us at <a href="mailto:drawinga36@gmail.com">MAIL</a></p>
         </section>
     </main>
     <footer>
@@ -52,7 +57,7 @@
             <p class="disclaimer">
                 CineNest does not host any of the files displayed on this website. All content is provided by third-party file hosting services. We do not own, control, or upload any media files. Contact the hosting provider directly for any concerns.
             </p>
-            <p>visit this site for the code -> <a href="https://bharath6911.github.io/CineNest/">SourceCode</a> </p>     
+            <p>visit this site for the code -> <a href="https://github.com/Bharath6911/CineNest">SourceCode</a> </p>     
         </center>
     </footer>
 
@@ -66,7 +71,60 @@
             </video>
         </div>
     </div>
-
+    <div id="genreModal" class="modal">
+        <div class="modal-content">
+            <span id="closeGenreModal" class="close">&times;</span>
+            <h3>Select Genres</h3>
+            <form id="genreForm">
+                <div id="genreList">
+                    <!-- Add your genres here as labels with checkboxes -->
+                    <label>
+                        <input type="checkbox" name="genre" value="28"> Action
+                    </label>
+                    <label>
+                        <input type="checkbox" name="genre" value="12"> Adventure
+                    </label>
+                    <label>
+                        <input type="checkbox" name="genre" value="16"> Animation
+                    </label>
+                    <label>
+                        <input type="checkbox" name="genre" value="35"> Comedy
+                    </label>
+                    <label>
+                        <input type="checkbox" name="genre" value="18"> Drama
+                    </label>
+                    <label>
+                        <input type="checkbox" name="genre" value="10749"> Romance
+                    </label>
+                    <label>
+                        <input type="checkbox" name="genre" value="27"> Horror
+                    </label>
+                    <label>
+                        <input type="checkbox" name="genre" value="53"> Thriller
+                    </label>
+                    <label>
+                        <input type="checkbox" name="genre" value="878"> Science Fiction
+                    </label>
+                    <label>
+                        <input type="checkbox" name="genre" value="10751"> Family
+                    </label>
+                    <label>
+                        <input type="checkbox" name="genre" value="9648"> Mystery
+                    </label>
+                    <label>
+                        <input type="checkbox" name="genre" value="36"> History
+                    </label>
+                    <label>
+                        <input type="checkbox" name="genre" value="99"> Documentary
+                    </label>
+                    <label>
+                        <input type="checkbox" name="genre" value="10764"> Reality
+                    </label>
+                </div>
+                <button type="submit">Apply</button>
+            </form>
+        </div>
+    </div>
     <script src="j.js"></script>
 </body>
 </html>
