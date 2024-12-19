@@ -436,3 +436,48 @@ p {
     margin-top: 10px;
     font-size: 18px;
 }
+
+
+
+/*login css*/
+.login-container {
+    background-color: #1f1f1f;
+    padding: 20px 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(30, 149, 228, 0.5);
+    width: 400px;
+    text-align: center;
+}
+
+.login-container h1 {
+    margin-bottom: 20px;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+.login-container button {
+    background-color: rgb(37, 150, 190);;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.login-container button:hover {
+    background-color: #04fd6c;
+}
+
+.error {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    display: none;
+}
