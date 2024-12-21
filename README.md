@@ -39,6 +39,10 @@ During the creation of this project, I explored and learned various technologies
   -I used API of this site to get ratings and posters https://www.themoviedb.org/.
   -Using streaming platform streamtape i wanted to play the movie but couldn't get the source so was not able to play the movies.
   - source of streamtape https://streamtape.com/
+  -source for sharing of my website
+https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css
+(here we can use some of the ajax elements like sharing elements whatsapp, telegram,facebook,etc)
+
 
 I express my gratitude to these platforms for providing visuals that enhanced the appeal of CineNest.
 
