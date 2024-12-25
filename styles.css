@@ -447,6 +447,7 @@ p {
     box-shadow: 0 4px 10px rgba(30, 149, 228, 0.5);
     width: 400px;
     text-align: center;
+    z-index: 1;
 }
 
 .login-container h1 {
