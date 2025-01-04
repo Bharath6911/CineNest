@@ -1,12 +1,14 @@
 # CineNest
 
-CineNest is a personalized streaming platform that allows users to watch movies and series in a lightweight, user-friendly environment. This project was inspired by a desire to create an alternative to platforms like Netflix that operate primarily as a front-end and back-end service provider with high costs. CineNest is designed to be simpler, more cost-effective, and a streamlined solution for entertainment.
+https://cinenest.onrender.com/log.html
+
+CineNest is a personalized streaming platform that allows users to watch movies and series in a lightweight, user-friendly environment. This project was inspired by a desire to create an alternative to platforms like Netflix that operate primarily as a front-end and back-end service provider with high costs. CineNest is designed to be simpler,it doesn't ask money for entertainment.
 
 ---
 
 ## Why CineNest?
 
-I wanted to create a site similar to Netflix but less expensive. Platforms like Netflix operate by sourcing content from other providers and offering a nice front-end and back-end system. CineNest aims to achieve a comparable experience while being accessible and affordable, focusing on streaming simplicity and user satisfaction.
+I wanted to create a site similar to Netflix but bo money required. Platforms like Netflix operate by sourcing content from other providers and offering a nice front-end and back-end system. CineNest aims to achieve a comparable experience while being accessible to everyone, focusing on streaming simplicity and user satisfaction.
 
 ---
 
@@ -18,6 +20,10 @@ During the creation of this project, I explored and learned various technologies
 3. **JavaScript**: To add functionality like dynamic video playback and modal windows for better user interaction.
 4. **Git and GitHub**: To manage code versioning and host the site online.
 5. **Project Structuring**: Organizing files like videos, images, scripts, and stylesheets effectively.
+6. **streaming site to visit**:
+https://cinenest.onrender.com/
+ -we have used render for free tier plan for deployment of our webpages
+first it was just a frontend of platform where it don't have backend yet,(we'll try in near future) 
 
 ---
 
@@ -28,7 +34,7 @@ During the creation of this project, I explored and learned various technologies
 3. **Styling with CSS**: styling was done with external css format because inline,internal css is not best and it helps you organize code nicely.
 4. **Functionality with JavaScript**: So first of all i did not know a thing about javascript i used various websites and tools to learn and copied some from chatgpt.
 5. **Hosting**: I learned how to deploy the site on GitHub Pages to make it accessible online.
-6. **Refinements**: I continuously improved the design, added features like a microphone section, and optimized the user experience.
+6. **Improvement**: I continuously improved the design, added features like a microphone section, and optimized the user experience.
 
 ---
 
@@ -42,8 +48,10 @@ During the creation of this project, I explored and learned various technologies
   -source for sharing of my website
 https://cdnjs.cloudflare.com
 (here we can use some of the ajax elements like sharing elements whatsapp, telegram,facebook,etc)
+-**hosting**:
+  I used https://render.com/ to host my static website 
 
-
+  
 I express my gratitude to these platforms for providing visuals that enhanced the appeal of CineNest.
 
 ---
@@ -56,7 +64,7 @@ I express my gratitude to these platforms for providing visuals that enhanced th
 
 ---
 
-CineNest is a step toward realizing my vision of a cost-effective, user-friendly streaming service. I definetly enjoyed building the website learned a lots of things and doing so i was able to know my potential and was able to visaulize my thoughts. 😊
+CineNest is a step toward realizing my vision, user-friendly streaming service. I definetly enjoyed building the website learned a lots of things and doing so i was able to know my potential and was able to visaulize my thoughts. 😊
 
 ---
 
