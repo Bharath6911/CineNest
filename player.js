@@ -55,7 +55,7 @@ function filterMovies(movies) {
         const lowerOverview = movie.overview.toLowerCase();
 
         //excluded keywords
-        const excludedKeywords = ['sun', 'pleasure', 'adult', 'nudity', 'sensual'];
+        const excludedKeywords = ['sun', 'pleasure', 'adult', 'nudity', 'sensual', 'japanese'];
         for (let keyword of excludedKeywords) {
             if (lowerTitle.includes(keyword) || lowerOverview.includes(keyword)) {
                 return false;
@@ -72,7 +72,7 @@ function filterSeries(series) {
         const lowerOverview = show.overview.toLowerCase();
 
         // excluded keywords
-        const excludedKeywords = ['sun', 'pleasure', 'adult', 'nudity', 'sensual'];
+        const excludedKeywords = ['sun', 'pleasure', 'adult', 'nudity', 'sensual', 'japanese'];
         for (let keyword of excludedKeywords) {
             if (lowerTitle.includes(keyword) || lowerOverview.includes(keyword)) {
                 return false;
