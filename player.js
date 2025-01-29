@@ -136,8 +136,8 @@ function displaySeries(series) {
 
 // Streamtape video mapping (TMDb ID -> Streamtape URL)
 const trailerLinks = {
-    "940551": "https://www.youtube.com/embed/Q8ZtS6YF9WY", // Migration trailer
-    "67890": "https://www.youtube.com/embed/7kSuIULgUJw",   // UFO example
+    "940551": "https://youtu.be/cQfo0HJhCnE?si=INwRA19jxDBo4FTz", // Migration trailer
+    "67890": "https://youtu.be/HSOcBkkMeIM?si=mLurtWFN_JpmG7tn",   // UFO example
 };
 
 
