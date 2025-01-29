@@ -134,10 +134,10 @@ function displaySeries(series) {
 
 
 
-// Streamtape video mapping (TMDb ID -> Streamtape URL)
-const streamtapeVideos = {
-    "940551": "https://streamtape.com/v/92vKMzJX2mS18M/migration.mp4", 
-    "67890": "https://streamtape.com/v/GQwaJR1x1euaqv/ufo.mp4", 
+// Streamtape video mapping (TMDb ID -> Trailers URL)
+const trailerLinks = {
+    "940551": "https://www.youtube.com/embed/Q8ZtS6YF9WY", // Migration trailer
+    "67890": "https://www.youtube.com/embed/7kSuIULgUJw",   // UFO example
 };
 
 
@@ -154,8 +154,17 @@ async function fetchMovieDetails(id) {
         const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
         const movieData = await response.json();
 
-        // Setting video source 
-        const videoSrc = streamtapeVideos[id];
+       // Update video player to use iframe
+const videoContainer = document.querySelector('.video-player-container');
+if (trailerLinks[movieId]) {
+    videoContainer.innerHTML = `
+        <iframe src="${trailerLinks[movieId]}" 
+                frameborder="0" 
+                allowfullscreen>
+        </iframe>
+    `;
+}
+
         const videoPlayer = document.getElementById('videoPlayer');
         if (videoSrc) {
             videoPlayer.src = videoSrc;
