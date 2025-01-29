@@ -164,11 +164,7 @@ if (trailerLinks[movieId]) {
         </iframe>
     `;
 }else {
-            videoPlayer.style.display = "none";
-            const errorMessage = document.createElement('p');
-            errorMessage.textContent = "Sorry, this video is not available.";
-            errorMessage.style.color = "red";
-            document.querySelector('.video-player-container').appendChild(errorMessage);
+           videoContainer.innerHTML='<p style="color:red;">Sorry ,no trailer available</p>';
         }
 
         // Update movie details
