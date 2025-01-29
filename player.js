@@ -33,7 +33,7 @@ async function fetchPopularMovies() {
 // Fetch and display popular series
 async function fetchPopularSeries() {
     try {
-        await dhowLoadingSpinner();
+        await showLoadingSpinner();
         const response = await fetch(
             `${BASE_URL}/discover/tv?api_key=${API_KEY}&certification_country=US&certification.lte=PG-13&sort_by=popularity.desc&with_genres=10759,16,35`
         );
