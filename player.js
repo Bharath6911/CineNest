@@ -161,6 +161,8 @@ async function fetchMovieDetails(id) {
                 <iframe 
                     src="https://www.youtube-nocookie.com/embed/${trailerLinks[id]}?rel=0&modestbranding=1" 
                     title="YouTube video player" 
+                    width="100"
+                    height="100"
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                     referrerpolicy="strict-origin-when-cross-origin" 
