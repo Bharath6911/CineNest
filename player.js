@@ -134,7 +134,7 @@ function displaySeries(series) {
 
 
 
-// Streamtape video mapping (TMDb ID -> Trailers URL)
+// Streamtape video mapping (TMDb ID -> Streamtape URL)
 const trailerLinks = {
     "940551": "https://www.youtube.com/embed/Q8ZtS6YF9WY", // Migration trailer
     "67890": "https://www.youtube.com/embed/7kSuIULgUJw",   // UFO example
@@ -154,8 +154,8 @@ async function fetchMovieDetails(id) {
         const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
         const movieData = await response.json();
 
-       // Update video player to use iframe
-const videoContainer = document.querySelector('.video-player-container');
+        // Setting video source 
+        const videoContainer = document.querySelector('.video-player-container');
 if (trailerLinks[movieId]) {
     videoContainer.innerHTML = `
         <iframe src="${trailerLinks[movieId]}" 
@@ -163,12 +163,7 @@ if (trailerLinks[movieId]) {
                 allowfullscreen>
         </iframe>
     `;
-}
-
-        const videoPlayer = document.getElementById('videoPlayer');
-        if (videoSrc) {
-            videoPlayer.src = videoSrc;
-        } else {
+}else {
             videoPlayer.style.display = "none";
             const errorMessage = document.createElement('p');
             errorMessage.textContent = "Sorry, this video is not available.";
