@@ -136,7 +136,7 @@ function displaySeries(series) {
 
 // Streamtape video mapping (TMDb ID -> Streamtape URL)
 const trailerLinks = {
-    "940551": "cQfo0HJhCnE&t", // Migration trailer
+    "940551": "fSMUw7vzGpnHo8kY", // Migration trailer
     "67890": "mLurtWFN_JpmG7tn",   // UFO example
 };
 
@@ -160,8 +160,10 @@ async function fetchMovieDetails(id) {
             videoContainer.innerHTML = `
                 <iframe 
                     src="https://www.youtube-nocookie.com/embed/${trailerLinks[id]}?rel=0&modestbranding=1" 
+                    title="YouTube video player" 
                     frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
                     allowfullscreen
                     loading="lazy"
                 ></iframe>
