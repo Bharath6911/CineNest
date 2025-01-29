@@ -136,8 +136,8 @@ function displaySeries(series) {
 
 // Streamtape video mapping (TMDb ID -> Streamtape URL)
 const trailerLinks = {
-    "940551": "https://youtu.be/cQfo0HJhCnE?si=INwRA19jxDBo4FTz", // Migration trailer
-    "67890": "https://youtu.be/HSOcBkkMeIM?si=mLurtWFN_JpmG7tn",   // UFO example
+    "940551": "INwRA19jxDBo4FTz", // Migration trailer
+    "67890": "mLurtWFN_JpmG7tn",   // UFO example
 };
 
 
@@ -155,16 +155,19 @@ async function fetchMovieDetails(id) {
         const movieData = await response.json();
 
         // Setting video source 
-        const videoContainer = document.querySelector('.video-player-container');
-if (trailerLinks[movieId]) {
-    videoContainer.innerHTML = `
-        <iframe src="${trailerLinks[movieId]}" 
-                frameborder="0" 
-                allowfullscreen>
-        </iframe>
-    `;
-}else {
-           videoContainer.innerHTML='<p style="color:red;">Sorry ,no trailer available</p>';
+      const videoContainer = document.querySelector('.video-player-container');
+        if (trailerLinks[id]) {
+            videoContainer.innerHTML = `
+                <iframe 
+                    src="https://www.youtube-nocookie.com/embed/${trailerLinks[id]}?rel=0&modestbranding=1" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    loading="lazy"
+                ></iframe>
+            `;
+        } else {
+            videoContainer.innerHTML = '<p style="color: red">Trailer not available</p>';
         }
 
         // Update movie details
