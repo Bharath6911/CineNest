@@ -153,13 +153,13 @@ async function fetchMovieDetails(id) {
       const movieData = await movieResponse.json();
         const videosData = await videosResponse.json();
 
-        // Priority order for video types
+        // Priority order for video searching in youtube
         const videoPriority = [
-            { type: 'Trailer', official: true },    // Official trailer
-            { type: 'Trailer', official: false },   // Unofficial trailer
-            { type: 'Teaser', official: true },     // Official teaser
-            { type: 'Clip', official: true },       // Official clip
-            { type: 'Featurette', official: true },  // Behind-the-scenes
+            { type: 'Trailer', official: true },   
+            { type: 'Trailer', official: false },   
+            { type: 'Teaser', official: true },   
+            { type: 'Clip', official: true },     
+            { type: 'Featurette', official: true },  
             { type: 'Movie', official: true } 
         ];
 
@@ -207,7 +207,6 @@ async function fetchMovieDetails(id) {
                             Find Streaming Options
                         </a>
                     </div>
-                    <p class="disclaimer">Note: Always verify the legitimacy of streaming sources</p>
                 </div>
             `;
         }
