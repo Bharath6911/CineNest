@@ -159,7 +159,8 @@ async function fetchMovieDetails(id) {
             { type: 'Trailer', official: false },   // Unofficial trailer
             { type: 'Teaser', official: true },     // Official teaser
             { type: 'Clip', official: true },       // Official clip
-            { type: 'Featurette', official: true }  // Behind-the-scenes
+            { type: 'Featurette', official: true },  // Behind-the-scenes
+            { type: 'Movie', official: true } 
         ];
 
         // Find best available video
