@@ -134,17 +134,6 @@ function displaySeries(series) {
 
 
 
-// wanted to use Streamtape video mapping (TMDb ID -> Streamtape URL) but because of high traffic ads its anable to load and the videos have to be legal so used simple youtube trailors 
-const trailerLinks = {
-    "940551": "UkHxhPGpRuA", // Migration trailer
-    "67890": "mLurtWFN_JpmG7tn",   // UFO example
-    "839033": "gCUg6Td5fgQ",
-    "1147416": "iFN9DouWuYY",
-    "569094": "cqGjhVJWtEg",
-    "1159311": "sXAZ0b-Q59Y",
-    "177572": "z3biFxZIJOQ",
-    "588648": "64V_Drr_3v0",
-};
 
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -154,32 +143,44 @@ const movieTitle = urlParams.get('title');
 
 document.getElementById('movieTitle').textContent = decodeURIComponent(movieTitle || "Movie Title");
 
-// Fetch movie details using TMDb API
 async function fetchMovieDetails(id) {
     try {
-        const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
-        const movieData = await response.json();
+        const [movieResponse, videosResponse] = await Promise.all([
+            fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`),
+            fetch(`${BASE_URL}/movie/${id}/videos?api_key=${API_KEY}`)
+        ]);
 
-        // Setting video source 
-      const videoContainer = document.querySelector('.video-player-container');
-        if (trailerLinks[id]) {
+        const movieData = await movieResponse.json();
+        const videosData = await videosResponse.json();
+
+        // Find the first official YouTube trailer
+        const trailer = videosData.results.find(video => 
+            video.site === 'YouTube' && 
+            video.type === 'Trailer' &&
+            video.official === true
+        );
+
+        const videoContainer = document.querySelector('.video-player-container');
+        if (trailer) {
             videoContainer.innerHTML = `
                 <iframe 
-                    src="https://www.youtube-nocookie.com/embed/${trailerLinks[id]}?rel=0&modestbranding=1" 
-                    title="YouTube video player" 
-                    width="800"
-                    height="420"
+                    src="https://www.youtube-nocookie.com/embed/${trailer.key}?rel=0&modestbranding=1" 
+                    title="${movieData.title} Trailer" 
                     frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen
-                    loading="lazy"
                 ></iframe>
             `;
         } else {
-            videoContainer.innerHTML = '<p style="color: red">Trailer not available</p>';
+            videoContainer.innerHTML = `
+                <div class="no-trailer">
+                    <p>⚠️ Trailer not available</p>
+                    <p>Try searching for "${movieData.title}" on YouTube</p>
+                </div>
+            `;
         }
 
+      
         // Update movie details
         document.getElementById('movieRating').textContent = `Rating: ${movieData.vote_average}/10`;
         document.getElementById('movieReleaseDate').textContent = `Release Date: ${movieData.release_date}`;
