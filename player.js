@@ -150,36 +150,66 @@ async function fetchMovieDetails(id) {
             fetch(`${BASE_URL}/movie/${id}/videos?api_key=${API_KEY}`)
         ]);
 
-        const movieData = await movieResponse.json();
+      const movieData = await movieResponse.json();
         const videosData = await videosResponse.json();
 
-        // Find the first official YouTube trailer
-        const trailer = videosData.results.find(video => 
-            video.site === 'YouTube' && 
-            video.type === 'Trailer' &&
-            video.official === true
-        );
+        // Priority order for video types
+        const videoPriority = [
+            { type: 'Trailer', official: true },    // Official trailer
+            { type: 'Trailer', official: false },   // Unofficial trailer
+            { type: 'Teaser', official: true },     // Official teaser
+            { type: 'Clip', official: true },       // Official clip
+            { type: 'Featurette', official: true }  // Behind-the-scenes
+        ];
+
+        // Find best available video
+        let video = null;
+        for (const { type, official } of videoPriority) {
+            video = videosData.results.find(v => 
+                v.site === 'YouTube' &&
+                v.type === type &&
+                (official ? v.official : true)
+            );
+            if (video) break;
+        }
 
         const videoContainer = document.querySelector('.video-player-container');
-        if (trailer) {
+        const movieTitle = movieData.title;
+
+        if (video) {
             videoContainer.innerHTML = `
                 <iframe 
-                    src="https://www.youtube-nocookie.com/embed/${trailer.key}?rel=0&modestbranding=1" 
-                    title="${movieData.title} Trailer" 
+                    src="https://www.youtube-nocookie.com/embed/${video.key}?rel=0&modestbranding=1" 
+                    title="${movieTitle} Video" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen
                 ></iframe>
             `;
         } else {
+            // Fallback: YouTube search + legal streaming suggestion
             videoContainer.innerHTML = `
-                <div class="no-trailer">
-                    <p>⚠️ Trailer not available</p>
-                    <p>Try searching for "${movieData.title}" on YouTube</p>
+                <div class="video-fallback">
+                    <div class="fallback-message">
+                        <p>⚠️ No official videos found for "${movieTitle}"</p>
+                        <p>Try these options:</p>
+                    </div>
+                    <div class="fallback-actions">
+                        <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(movieTitle + ' full movie')}" 
+                           target="_blank" 
+                           class="fallback-button">
+                            Search YouTube
+                        </a>
+                        <a href="https://www.justwatch.com/in/search?q=${encodeURIComponent(movieTitle)}" 
+                           target="_blank" 
+                           class="fallback-button">
+                            Find Streaming Options
+                        </a>
+                    </div>
+                    <p class="disclaimer">Note: Always verify the legitimacy of streaming sources</p>
                 </div>
             `;
         }
-
       
         // Update movie details
         document.getElementById('movieRating').textContent = `Rating: ${movieData.vote_average}/10`;
