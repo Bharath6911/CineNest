@@ -134,10 +134,16 @@ function displaySeries(series) {
 
 
 
-// Streamtape video mapping (TMDb ID -> Streamtape URL)
+// wanted to use Streamtape video mapping (TMDb ID -> Streamtape URL) but because of high traffic ads its anable to load and the videos have to be legal so used simple youtube trailors 
 const trailerLinks = {
     "940551": "UkHxhPGpRuA", // Migration trailer
     "67890": "mLurtWFN_JpmG7tn",   // UFO example
+    "839033": "gCUg6Td5fgQ",
+    "1147416": "iFN9DouWuYY",
+    "569094": "cqGjhVJWtEg",
+    "1159311": "sXAZ0b-Q59Y",
+    "177572": "z3biFxZIJOQ",
+    "588648": "64V_Drr_3v0",
 };
 
 
