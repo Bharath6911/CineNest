@@ -178,7 +178,7 @@ if (SpeechRecognition) {
     recognition.onerror = (event) => {
         console.error('Speech recognition error:', event.error);
         micButton.textContent = '🎤'; 
-        alert('Speech recognition failed. Please try again.');
+        alert('Speech recognition failed. Please try again. Maybe 🤔 your browser is not supported.');
     };
 } else {
     micButton.disabled = true;
