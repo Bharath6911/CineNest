@@ -5,6 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Player</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+       .container22{
+      display:flex;
+      column-gap:5px;
+     }
+    /* Google Translate Button Styling */
+.translate {
+    display: inline-block;
+    background-color: rgb(37, 150, 190); 
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s;
+    text-align: center;
+}
+
+/* Hover Effect */
+.translate:hover {
+    background-color: rgb(30, 120, 160);
+    transform: scale(1.05);
+}
+
+/* Remove Google Translate Logo */
+.goog-logo-link,
+.goog-te-gadget span {
+    display: none !important;
+}
+
+/* Remove Unnecessary White Background */
+.goog-te-gadget {
+    color: transparent !important;
+}
+
+/* Ensure Dropdown Stays Visible */
+.goog-te-combo {
+    display: inline-block;
+    background: none;
+    color: white;
+    border: 1px solid white;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.goog-te-combo:focus {
+    outline: none;
+}
+        
+    </style>
 </head>
 <body>
     <header>
@@ -21,10 +73,16 @@
                 
             </ul>
         </nav>
+        <div class="container22">
         <nav>
+
             <button id="genreButton" class="highlight-button">Genres</button>
-             
+
         </nav>
+
+            <div id="google_translate_element" class="translate"></div> 
+
+        </div>
         <div class="search-bar">
             <input type="text" id="search" placeholder="Search for movies or series...">
             <button id="micButton">
@@ -71,5 +129,23 @@
         </center>
     </footer>
     <script src="player.js"></script>
+    <script>
+     function changeLanguage(lang) {
+      var translateDropdown = document.querySelector(".goog-te-combo");
+      if (translateDropdown) {
+          translateDropdown.value = lang;
+          translateDropdown.dispatchEvent(new Event("change"));
+      }
+  }
+  function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+          pageLanguage: 'en',
+          includedLanguages: 'te,hi,fr,ar,es,zh-CN,zh-TW,ru,ja,de,ko,it,pt,tr,bn,ta,ur,fa,vi',
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+  }
+        
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
