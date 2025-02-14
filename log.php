@@ -4,10 +4,10 @@ session_start();
 $error = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $db_host     = "sql106.infinityfree.com";  
-        $db_username = "if0_38293542";
-        $db_password = "9966322665";
-        $db_name     = "if0_38293542_cinenestdb";
+        $db_host     = "sqlxxx.infinityfree.com";  
+        $db_username = "";
+        $db_password = "";
+        $db_name     = "";
 
     // Create a new database connection
     $conn = new mysqli($db_host, $db_username, $db_password, $db_name);
