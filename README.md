@@ -74,15 +74,15 @@ While major platforms like Netflix and Prime have extensive content libraries an
 
 ```
 CineNest/
-├── index.html         # Landing page
-├── log.php            # Login functionality
-├── register.php       # User registration functionality
-├── h.html             # Homepage for logged in users
-├── player.html        # Media player page
-├── j.js               # General JavaScript functions
-├── player.js          # Media player-specific scripts
-├── styles.css         # Global CSS styles
-└── image/             # Directory for images and icons
+├── index.html         
+├── log.php           
+├── register.php      
+├── h.html             
+├── player.html       
+├── j.js               
+├── player.js         
+├── styles.css         
+└── image/            
 ```
 
 ---
